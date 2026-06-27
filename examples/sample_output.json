@@ -1,0 +1,57 @@
+{
+  "pipeline_version": "0.1.0",
+  "collected_at": "2026-06-27T00:00:00Z",
+  "run_summary": {
+    "started_at": "2026-06-27T00:00:00Z",
+    "finished_at": "2026-06-27T00:00:00Z",
+    "runtime_seconds": 0,
+    "sources_attempted": 0,
+    "sources_succeeded": 0,
+    "sources_failed": 0,
+    "sources_skipped": 0,
+    "chunks_generated": 0,
+    "chunks_kept": 0,
+    "chunks_dropped": 0,
+    "admissions_relevant_chunks": 0,
+    "chunks_before_admissions_filter": 0,
+    "chunks_dropped_by_admissions_filter": 0,
+    "sources_dropped_by_admissions_filter": 0,
+    "collectors": {
+      "blog": {
+        "attempted": 0,
+        "succeeded": 0,
+        "failed": 0,
+        "status": "not_configured"
+      },
+      "youtube": {
+        "attempted": 0,
+        "succeeded": 0,
+        "failed": 0,
+        "status": "not_configured"
+      },
+      "reddit": {
+        "attempted": 0,
+        "succeeded": 0,
+        "failed": 0,
+        "status": "not_configured"
+      },
+      "official": {
+        "attempted": 0,
+        "succeeded": 0,
+        "failed": 0,
+        "status": "not_configured"
+      }
+    },
+    "collectors_proven_in_this_run": [],
+    "manual_transcript_fallback_proven": false,
+    "youtube_live_transcript_items": 0,
+    "youtube_manual_transcript_items": 0,
+    "collectors_skipped_due_to_missing_credentials": [],
+    "failure_reasons": [],
+    "errors": [],
+    "stop_reason": "completed",
+    "source_jobs": []
+  },
+  "items": [],
+  "errors": []
+}

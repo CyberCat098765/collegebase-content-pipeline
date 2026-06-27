@@ -1,0 +1,49 @@
+sources:
+  reddit:
+    subreddits:
+      - ApplyingToCollege
+    keywords:
+      - "college essays"
+    urls: []
+    limit_per_query: 2
+    max_comments: 3
+
+  youtube:
+    videos:
+      - "https://www.youtube.com/watch?v=Xz94wRwFOCI"
+      - "https://www.youtube.com/watch?v=2meKwMIWGlw"
+    transcript_files:
+      - path: "transcripts/sample_transcript.vtt"
+        source_url: "https://collegebase.local/examples/manual-transcript"
+        title: "CollegeBase Sample Admissions Planning Transcript"
+        channel: "CollegeBase"
+    request_timeout_seconds: 20
+
+  articles:
+    urls:
+      - "https://www.vox.com/even-better/369514/college-application-essay-advice-personal-statement-common-app-supplemental-essays"
+      - "https://www.teenvogue.com/story/how-to-write-perfect-college-application-essay-tips-tricks"
+      - "https://www.teenvogue.com/story/writing-college-essay-tips"
+      - "https://blog.collegevine.com/how-to-write-the-common-application-essays/"
+      - "https://www.scribbr.com/college-essay/college-essay-examples/"
+      - "https://admissionsight.com/college-application-timeline/"
+    request_timeout_seconds: 20
+
+  official:
+    college_scorecard:
+      enabled: false
+      schools: []
+
+processing:
+  chunk_max_chars: 1200
+
+run:
+  max_runtime_minutes: 30
+  max_sources_total: 25
+  max_chunks_total: 300
+  max_failures_total: 20
+  request_delay_seconds: 0
+  timeout_seconds: 20
+  retries_per_source: 1
+  checkpoint_every_n_sources: 5
+  runtime_dir: "data/runtime"

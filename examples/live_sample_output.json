@@ -1,0 +1,945 @@
+{
+  "pipeline_version": "0.1.0",
+  "collected_at": "2026-06-27T14:24:28Z",
+  "run_summary": {
+    "started_at": "2026-06-27T14:24:28Z",
+    "finished_at": "2026-06-27T14:24:35Z",
+    "runtime_seconds": 7.03,
+    "sources_attempted": 10,
+    "sources_succeeded": 9,
+    "sources_failed": 0,
+    "sources_skipped": 1,
+    "sources_skipped_from_cache": 0,
+    "sources_skipped_due_to_credentials": 1,
+    "chunks_generated": 114,
+    "chunks_kept": 114,
+    "chunks_dropped": 0,
+    "admissions_relevant_chunks": 114,
+    "chunks_before_admissions_filter": 114,
+    "chunks_dropped_by_admissions_filter": 0,
+    "sources_dropped_by_admissions_filter": 0,
+    "collectors": {
+      "blog": {
+        "attempted": 6,
+        "succeeded": 6,
+        "failed": 0,
+        "status": "proven_in_this_run"
+      },
+      "youtube": {
+        "attempted": 3,
+        "succeeded": 3,
+        "failed": 0,
+        "status": "proven_in_this_run"
+      },
+      "reddit": {
+        "attempted": 1,
+        "succeeded": 0,
+        "failed": 1,
+        "status": "failed_or_skipped"
+      },
+      "official": {
+        "attempted": 0,
+        "succeeded": 0,
+        "failed": 0,
+        "status": "not_configured"
+      }
+    },
+    "collectors_proven_in_this_run": [
+      "blog",
+      "youtube"
+    ],
+    "manual_transcript_fallback_proven": true,
+    "youtube_live_transcript_items": 2,
+    "youtube_manual_transcript_items": 1,
+    "collectors_skipped_due_to_missing_credentials": [
+      "reddit"
+    ],
+    "failure_reasons": [
+      {
+        "source_type": "reddit",
+        "source": "reddit://search/ApplyingToCollege?q=college%20essays",
+        "message": "Missing Reddit API credentials. Set REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, and REDDIT_USER_AGENT to enable Reddit collection."
+      }
+    ],
+    "errors": [
+      {
+        "source_type": "reddit",
+        "source": "reddit://search/ApplyingToCollege?q=college%20essays",
+        "message": "Missing Reddit API credentials. Set REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, and REDDIT_USER_AGENT to enable Reddit collection."
+      }
+    ],
+    "stop_reason": "completed",
+    "source_jobs": [
+      {
+        "job_id": "job_89d06ece0f00",
+        "source_type": "article",
+        "url": "https://www.vox.com/even-better/369514/college-application-essay-advice-personal-statement-common-app-supplemental-essays",
+        "status": "succeeded",
+        "attempts": 1,
+        "error": "",
+        "created_at": "2026-06-27T14:24:28Z",
+        "updated_at": "2026-06-27T14:24:28Z"
+      },
+      {
+        "job_id": "job_226f4a982bf1",
+        "source_type": "article",
+        "url": "https://www.teenvogue.com/story/how-to-write-perfect-college-application-essay-tips-tricks",
+        "status": "succeeded",
+        "attempts": 1,
+        "error": "",
+        "created_at": "2026-06-27T14:24:28Z",
+        "updated_at": "2026-06-27T14:24:28Z"
+      },
+      {
+        "job_id": "job_74ae39da3fdd",
+        "source_type": "article",
+        "url": "https://www.teenvogue.com/story/writing-college-essay-tips",
+        "status": "succeeded",
+        "attempts": 1,
+        "error": "",
+        "created_at": "2026-06-27T14:24:28Z",
+        "updated_at": "2026-06-27T14:24:28Z"
+      },
+      {
+        "job_id": "job_f8b8a8361a17",
+        "source_type": "article",
+        "url": "https://blog.collegevine.com/how-to-write-the-common-application-essays/",
+        "status": "succeeded",
+        "attempts": 1,
+        "error": "",
+        "created_at": "2026-06-27T14:24:28Z",
+        "updated_at": "2026-06-27T14:24:28Z"
+      },
+      {
+        "job_id": "job_3bd96d5f79b4",
+        "source_type": "article",
+        "url": "https://www.scribbr.com/college-essay/college-essay-examples/",
+        "status": "succeeded",
+        "attempts": 1,
+        "error": "",
+        "created_at": "2026-06-27T14:24:28Z",
+        "updated_at": "2026-06-27T14:24:28Z"
+      },
+      {
+        "job_id": "job_251c0d81d934",
+        "source_type": "article",
+        "url": "https://admissionsight.com/college-application-timeline/",
+        "status": "succeeded",
+        "attempts": 1,
+        "error": "",
+        "created_at": "2026-06-27T14:24:28Z",
+        "updated_at": "2026-06-27T14:24:28Z"
+      },
+      {
+        "job_id": "job_9add6e3a70a5",
+        "source_type": "youtube",
+        "url": "https://www.youtube.com/watch?v=Xz94wRwFOCI",
+        "status": "succeeded",
+        "attempts": 1,
+        "error": "",
+        "created_at": "2026-06-27T14:24:28Z",
+        "updated_at": "2026-06-27T14:24:28Z"
+      },
+      {
+        "job_id": "job_15a81e81037b",
+        "source_type": "youtube",
+        "url": "https://www.youtube.com/watch?v=2meKwMIWGlw",
+        "status": "succeeded",
+        "attempts": 1,
+        "error": "",
+        "created_at": "2026-06-27T14:24:28Z",
+        "updated_at": "2026-06-27T14:24:28Z"
+      },
+      {
+        "job_id": "job_ca14e556b000",
+        "source_type": "transcript_file",
+        "url": "https://collegebase.local/examples/manual-transcript",
+        "status": "succeeded",
+        "attempts": 1,
+        "error": "",
+        "created_at": "2026-06-27T14:24:28Z",
+        "updated_at": "2026-06-27T14:24:28Z"
+      },
+      {
+        "job_id": "job_8d20ee1230c5",
+        "source_type": "reddit",
+        "url": "reddit://search/ApplyingToCollege?q=college%20essays",
+        "status": "skipped",
+        "attempts": 0,
+        "error": "Missing Reddit API credentials. Set REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, and REDDIT_USER_AGENT to enable Reddit collection.",
+        "created_at": "2026-06-27T14:24:28Z",
+        "updated_at": "2026-06-27T14:24:28Z"
+      }
+    ],
+    "source_registry": {
+      "path": "data\\runtime\\source_registry.json",
+      "registered_sources": 10
+    }
+  },
+  "items": [
+    {
+      "source_type": "blog",
+      "source_name": "www.vox.com",
+      "title": "This is what admissions officers really want to read in college essays",
+      "url": "https://www.vox.com/even-better/369514/college-application-essay-advice-personal-statement-common-app-supplemental-essays",
+      "author_or_channel": "Allie Volpe",
+      "published_date": "2024-09-19",
+      "collected_at": "2026-06-27T14:24:28Z",
+      "raw_text": "One of the most memorable essays college admissions counselor Alexis White worked on with a student wasn’t about a harrowing personal challenge or a rewarding volunteering experience. “It started with the sentence ‘My hair arrives in a room before I do,’” says White, the founder...",
+      "admissions_relevance_score": 4,
+      "admissions_topics": [
+        "college_essays",
+        "activities_list",
+        "admissions_strategy",
+        "common_app",
+        "application_timeline"
+      ],
+      "drop_reason": "",
+      "metadata": {
+        "content_type": "text/html; charset=utf-8",
+        "status_code": 200,
+        "extractor": "trafilatura",
+        "admissions_filter": {
+          "min_chunk_score": 3,
+          "chunks_before_filter": 10,
+          "chunks_kept": 10,
+          "chunks_dropped": 0,
+          "drop_reasons": [],
+          "dropped_chunk_previews": []
+        },
+        "sample_preview_only": true,
+        "sample_total_chunks": 10,
+        "sample_raw_text_truncated": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "chunk_fd269bf5897a",
+          "text": "One of the most memorable essays college admissions counselor Alexis White worked on with a student wasn’t about a harrowing personal challenge or a rewarding volunteering experience. “It started with the sentence ‘My hair arrives in a room before I do,’” says White, the founder...",
+          "source_url": "https://www.vox.com/even-better/369514/college-application-essay-advice-personal-statement-common-app-supplemental-essays",
+          "citation_label": "www.vox.com: This is what admissions officers really want to read in college essays",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "topic_tags": [
+            "college_essays",
+            "admissions_strategy",
+            "recommendations"
+          ],
+          "audience": [
+            "general"
+          ],
+          "content_use": "both",
+          "usefulness_score": 5,
+          "why_useful": "substantive length, detailed context, admissions topic match, blog source",
+          "admissions_relevance_score": 4,
+          "admissions_topics": [
+            "college_essays",
+            "activities_list",
+            "admissions_strategy"
+          ],
+          "drop_reason": ""
+        },
+        {
+          "chunk_id": "chunk_5f62369ec402",
+          "text": "There are a number of essays students will need to write as a part of their college application. Over 1 million students apply to college through the Common App, a streamlined platform that allows students to apply to multiple schools at once. There, students write a personal...",
+          "source_url": "https://www.vox.com/even-better/369514/college-application-essay-advice-personal-statement-common-app-supplemental-essays",
+          "citation_label": "www.vox.com: This is what admissions officers really want to read in college essays",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "topic_tags": [
+            "college_essays",
+            "common_app",
+            "admissions_strategy"
+          ],
+          "audience": [
+            "general"
+          ],
+          "content_use": "both",
+          "usefulness_score": 5,
+          "why_useful": "substantive length, detailed context, admissions topic match, blog source",
+          "admissions_relevance_score": 4,
+          "admissions_topics": [
+            "college_essays",
+            "common_app",
+            "activities_list",
+            "application_timeline",
+            "admissions_strategy"
+          ],
+          "drop_reason": ""
+        }
+      ]
+    },
+    {
+      "source_type": "blog",
+      "source_name": "www.teenvogue.com",
+      "title": "10 Pro Tips for Crafting the Perfect College Application Essay",
+      "url": "https://www.teenvogue.com/story/how-to-write-perfect-college-application-essay-tips-tricks",
+      "author_or_channel": "Emma Sarran Webster",
+      "published_date": "2016-10-13",
+      "collected_at": "2026-06-27T14:24:28Z",
+      "raw_text": "The school year may have started only a couple months ago, but college application season is in full swing. If you’re planning to apply to college this year, now is the time to start narrowing down your choices and diving into those applications. Sure, your transcript, resume,...",
+      "admissions_relevance_score": 4,
+      "admissions_topics": [
+        "college_essays",
+        "application_timeline",
+        "admissions_strategy",
+        "activities_list"
+      ],
+      "drop_reason": "",
+      "metadata": {
+        "content_type": "text/html; charset=utf-8",
+        "status_code": 200,
+        "extractor": "trafilatura",
+        "admissions_filter": {
+          "min_chunk_score": 3,
+          "chunks_before_filter": 13,
+          "chunks_kept": 13,
+          "chunks_dropped": 0,
+          "drop_reasons": [],
+          "dropped_chunk_previews": []
+        },
+        "sample_preview_only": true,
+        "sample_total_chunks": 13,
+        "sample_raw_text_truncated": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "chunk_557e116c8dfc",
+          "text": "The school year may have started only a couple months ago, but college application season is in full swing. If you’re planning to apply to college this year, now is the time to start narrowing down your choices and diving into those applications. Sure, your transcript, resume,...",
+          "source_url": "https://www.teenvogue.com/story/how-to-write-perfect-college-application-essay-tips-tricks",
+          "citation_label": "www.teenvogue.com: 10 Pro Tips for Crafting the Perfect College Application Essay",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "topic_tags": [
+            "college_essays",
+            "admissions_strategy"
+          ],
+          "audience": [
+            "general"
+          ],
+          "content_use": "both",
+          "usefulness_score": 5,
+          "why_useful": "substantive length, detailed context, admissions topic match, blog source",
+          "admissions_relevance_score": 4,
+          "admissions_topics": [
+            "college_essays",
+            "application_timeline",
+            "admissions_strategy"
+          ],
+          "drop_reason": ""
+        },
+        {
+          "chunk_id": "chunk_fd97aad55fce",
+          "text": "College application essays are not formulaic. There’s no “intro, three paragraphs, conclusion” template to follow. And there’s no one way to go with the content, or the stories, you share. “There is a perception that students have to have a hardship story in order for their...",
+          "source_url": "https://www.teenvogue.com/story/how-to-write-perfect-college-application-essay-tips-tricks",
+          "citation_label": "www.teenvogue.com: 10 Pro Tips for Crafting the Perfect College Application Essay",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "topic_tags": [
+            "college_essays",
+            "admissions_strategy"
+          ],
+          "audience": [
+            "general"
+          ],
+          "content_use": "both",
+          "usefulness_score": 4,
+          "why_useful": "substantive length, admissions topic match, blog source",
+          "admissions_relevance_score": 4,
+          "admissions_topics": [
+            "college_essays",
+            "admissions_strategy"
+          ],
+          "drop_reason": ""
+        }
+      ]
+    },
+    {
+      "source_type": "blog",
+      "source_name": "www.teenvogue.com",
+      "title": "Eight Essential Tips for Writing Your College Essay",
+      "url": "https://www.teenvogue.com/story/writing-college-essay-tips",
+      "author_or_channel": "Sierra Tishgart",
+      "published_date": "2012-11-12",
+      "collected_at": "2026-06-27T14:24:28Z",
+      "raw_text": "Get personal! But not too personal! Avoid controversial topics! But be daring! It seems that everyone in your life—your parents, teachers, and friends—all have opinions on what makes for the best college essay. The truth is, applying to college is exhausting and tedious, but the...",
+      "admissions_relevance_score": 4,
+      "admissions_topics": [
+        "college_essays",
+        "admissions_strategy",
+        "activities_list",
+        "common_app"
+      ],
+      "drop_reason": "",
+      "metadata": {
+        "content_type": "text/html; charset=utf-8",
+        "status_code": 200,
+        "extractor": "trafilatura",
+        "admissions_filter": {
+          "min_chunk_score": 3,
+          "chunks_before_filter": 7,
+          "chunks_kept": 7,
+          "chunks_dropped": 0,
+          "drop_reasons": [],
+          "dropped_chunk_previews": []
+        },
+        "sample_preview_only": true,
+        "sample_total_chunks": 7,
+        "sample_raw_text_truncated": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "chunk_3a20ffb6f1a9",
+          "text": "Get personal! But not too personal! Avoid controversial topics! But be daring! It seems that everyone in your life—your parents, teachers, and friends—all have opinions on what makes for the best college essay. The truth is, applying to college is exhausting and tedious, but the...",
+          "source_url": "https://www.teenvogue.com/story/writing-college-essay-tips",
+          "citation_label": "www.teenvogue.com: Eight Essential Tips for Writing Your College Essay",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "topic_tags": [
+            "college_essays",
+            "standardized_testing"
+          ],
+          "audience": [
+            "general"
+          ],
+          "content_use": "both",
+          "usefulness_score": 4,
+          "why_useful": "substantive length, admissions topic match, blog source",
+          "admissions_relevance_score": 4,
+          "admissions_topics": [
+            "college_essays",
+            "admissions_strategy"
+          ],
+          "drop_reason": ""
+        },
+        {
+          "chunk_id": "chunk_3c02c7b3531a",
+          "text": "\"In my experience, writing your essay in a time span that's less than a week is too fast,\" says Jay Douglas, author of author of Make Them Want You: How to Write a Standout Personal Statement 15 Minutes at a Time. \"You probably haven't given your ideas a chance to percolate. On...",
+          "source_url": "https://www.teenvogue.com/story/writing-college-essay-tips",
+          "citation_label": "www.teenvogue.com: Eight Essential Tips for Writing Your College Essay",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "topic_tags": [
+            "college_essays"
+          ],
+          "audience": [
+            "general"
+          ],
+          "content_use": "both",
+          "usefulness_score": 5,
+          "why_useful": "substantive length, detailed context, admissions topic match, blog source",
+          "admissions_relevance_score": 4,
+          "admissions_topics": [
+            "college_essays",
+            "activities_list",
+            "admissions_strategy"
+          ],
+          "drop_reason": ""
+        }
+      ]
+    },
+    {
+      "source_type": "blog",
+      "source_name": "blog.collegevine.com",
+      "title": "How to Write the Common Application Essays 2025-2026 (With Examples)",
+      "url": "https://blog.collegevine.com/how-to-write-the-common-application-essays/",
+      "author_or_channel": "",
+      "published_date": "2025-09-24",
+      "collected_at": "2026-06-27T14:24:28Z",
+      "raw_text": "How to Write the Common Application Essays 2025-2026 (With Examples) The Common App essay is one of the most important parts of your application, but it can be extremely daunting if you’re not familiar with creative writing or what admissions officers are looking for. In this...",
+      "admissions_relevance_score": 4,
+      "admissions_topics": [
+        "college_essays",
+        "common_app",
+        "activities_list",
+        "admissions_strategy",
+        "admissions_mistakes"
+      ],
+      "drop_reason": "",
+      "metadata": {
+        "content_type": "text/html; charset=utf-8",
+        "status_code": 200,
+        "extractor": "trafilatura",
+        "admissions_filter": {
+          "min_chunk_score": 3,
+          "chunks_before_filter": 58,
+          "chunks_kept": 58,
+          "chunks_dropped": 0,
+          "drop_reasons": [],
+          "dropped_chunk_previews": []
+        },
+        "sample_preview_only": true,
+        "sample_total_chunks": 58,
+        "sample_raw_text_truncated": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "chunk_f7bcc759a4d2",
+          "text": "How to Write the Common Application Essays 2025-2026 (With Examples) The Common App essay is one of the most important parts of your application, but it can be extremely daunting if you’re not familiar with creative writing or what admissions officers are looking for. In this...",
+          "source_url": "https://blog.collegevine.com/how-to-write-the-common-application-essays/",
+          "citation_label": "blog.collegevine.com: How to Write the Common Application Essays 2025-2026 (With Examples)",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "topic_tags": [
+            "college_essays",
+            "common_app",
+            "admissions_strategy",
+            "recommendations"
+          ],
+          "audience": [
+            "general"
+          ],
+          "content_use": "both",
+          "usefulness_score": 4,
+          "why_useful": "substantive length, admissions topic match, blog source",
+          "admissions_relevance_score": 4,
+          "admissions_topics": [
+            "college_essays",
+            "common_app",
+            "activities_list",
+            "admissions_strategy"
+          ],
+          "drop_reason": ""
+        },
+        {
+          "chunk_id": "chunk_93ed51a3171a",
+          "text": "This is where essays come in; they are an opportunity for you to turn an admissions counselor into an advocate for your application! Of your essays, the Common App is the most important since it is seen by most of the colleges to which you apply. It is also your longest essay,...",
+          "source_url": "https://blog.collegevine.com/how-to-write-the-common-application-essays/",
+          "citation_label": "blog.collegevine.com: How to Write the Common Application Essays 2025-2026 (With Examples)",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "topic_tags": [
+            "college_essays",
+            "common_app",
+            "admissions_strategy",
+            "standardized_testing",
+            "recommendations"
+          ],
+          "audience": [
+            "senior"
+          ],
+          "content_use": "both",
+          "usefulness_score": 4,
+          "why_useful": "substantive length, admissions topic match, blog source",
+          "admissions_relevance_score": 4,
+          "admissions_topics": [
+            "college_essays",
+            "common_app"
+          ],
+          "drop_reason": ""
+        }
+      ]
+    },
+    {
+      "source_type": "blog",
+      "source_name": "www.scribbr.com",
+      "title": "College Essay Examples | What Works and What Doesn't",
+      "url": "https://www.scribbr.com/college-essay/college-essay-examples/",
+      "author_or_channel": "Kirsten Courault",
+      "published_date": "2021-11-08",
+      "collected_at": "2026-06-27T14:24:28Z",
+      "raw_text": "College Essay Examples | What Works and What Doesn't One effective method for improving your college essay is to read example essays. Here are three sample essays, each with a bad and good version to help you improve your own essay. For each essay, we’ve included annotations to...",
+      "admissions_relevance_score": 4,
+      "admissions_topics": [
+        "college_essays",
+        "admissions_strategy"
+      ],
+      "drop_reason": "",
+      "metadata": {
+        "content_type": "text/html; charset=UTF-8",
+        "status_code": 200,
+        "extractor": "trafilatura",
+        "admissions_filter": {
+          "min_chunk_score": 3,
+          "chunks_before_filter": 8,
+          "chunks_kept": 8,
+          "chunks_dropped": 0,
+          "drop_reasons": [],
+          "dropped_chunk_previews": []
+        },
+        "sample_preview_only": true,
+        "sample_total_chunks": 8,
+        "sample_raw_text_truncated": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "chunk_ac98ac1dee78",
+          "text": "College Essay Examples | What Works and What Doesn't One effective method for improving your college essay is to read example essays. Here are three sample essays, each with a bad and good version to help you improve your own essay. For each essay, we’ve included annotations to...",
+          "source_url": "https://www.scribbr.com/college-essay/college-essay-examples/",
+          "citation_label": "www.scribbr.com: College Essay Examples | What Works and What Doesn't",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "topic_tags": [
+            "college_essays"
+          ],
+          "audience": [
+            "general"
+          ],
+          "content_use": "both",
+          "usefulness_score": 5,
+          "why_useful": "substantive length, detailed context, admissions topic match, blog source",
+          "admissions_relevance_score": 3,
+          "admissions_topics": [
+            "college_essays"
+          ],
+          "drop_reason": ""
+        },
+        {
+          "chunk_id": "chunk_e7470b319e9a",
+          "text": "- My essay reveals something different from the rest of my application. - I have a clear and well-structured narrative. - I’ve concluded with an insight or a creative ending. Writing style and tone - I’ve crafted an introduction containing vivid imagery or an intriguing hook...",
+          "source_url": "https://www.scribbr.com/college-essay/college-essay-examples/",
+          "citation_label": "www.scribbr.com: College Essay Examples | What Works and What Doesn't",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "topic_tags": [
+            "college_essays",
+            "admissions_strategy"
+          ],
+          "audience": [
+            "general"
+          ],
+          "content_use": "both",
+          "usefulness_score": 5,
+          "why_useful": "substantive length, detailed context, admissions topic match, blog source",
+          "admissions_relevance_score": 3,
+          "admissions_topics": [
+            "college_essays"
+          ],
+          "drop_reason": ""
+        }
+      ]
+    },
+    {
+      "source_type": "blog",
+      "source_name": "admissionsight.com",
+      "title": "A Simplified College Application Timeline Every High Schooler Needs",
+      "url": "https://admissionsight.com/college-application-timeline/",
+      "author_or_channel": "Eric Eng",
+      "published_date": "2024-11-19",
+      "collected_at": "2026-06-27T14:24:28Z",
+      "raw_text": "We get it. Applying to college and going through the college application timeline is excruciatingly overwhelming, especially if you don’t have someone like a parent or older sibling who’s been through it to guide you. With so many steps involved—like writing your essay and...",
+      "admissions_relevance_score": 4,
+      "admissions_topics": [
+        "activities_list",
+        "application_timeline",
+        "admissions_strategy",
+        "early_decision",
+        "college_essays",
+        "financial_aid"
+      ],
+      "drop_reason": "",
+      "metadata": {
+        "content_type": "text/html; charset=UTF-8",
+        "status_code": 200,
+        "extractor": "trafilatura",
+        "admissions_filter": {
+          "min_chunk_score": 3,
+          "chunks_before_filter": 6,
+          "chunks_kept": 6,
+          "chunks_dropped": 0,
+          "drop_reasons": [],
+          "dropped_chunk_previews": []
+        },
+        "sample_preview_only": true,
+        "sample_total_chunks": 6,
+        "sample_raw_text_truncated": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "chunk_ade20a2cb2cc",
+          "text": "We get it. Applying to college and going through the college application timeline is excruciatingly overwhelming, especially if you don’t have someone like a parent or older sibling who’s been through it to guide you. With so many steps involved—like writing your essay and...",
+          "source_url": "https://admissionsight.com/college-application-timeline/",
+          "citation_label": "admissionsight.com: A Simplified College Application Timeline Every High Schooler Needs",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "topic_tags": [
+            "college_essays",
+            "admissions_strategy",
+            "recommendations"
+          ],
+          "audience": [
+            "junior",
+            "senior",
+            "parent"
+          ],
+          "content_use": "both",
+          "usefulness_score": 5,
+          "why_useful": "substantive length, detailed context, admissions topic match, blog source",
+          "admissions_relevance_score": 4,
+          "admissions_topics": [
+            "activities_list",
+            "application_timeline",
+            "admissions_strategy"
+          ],
+          "drop_reason": ""
+        },
+        {
+          "chunk_id": "chunk_00a4bfd03931",
+          "text": "- How do I get the money for my college education? A good starting point? Check out a timeline that lays out what you need to tackle as you work through the college admissions process. Most students start focusing on college application tasks during the summer between junior and...",
+          "source_url": "https://admissionsight.com/college-application-timeline/",
+          "citation_label": "admissionsight.com: A Simplified College Application Timeline Every High Schooler Needs",
+          "start_timestamp": "",
+          "end_timestamp": "",
+          "topic_tags": [
+            "early_admissions",
+            "admissions_strategy"
+          ],
+          "audience": [
+            "junior",
+            "senior"
+          ],
+          "content_use": "both",
+          "usefulness_score": 4,
+          "why_useful": "substantive length, admissions topic match, blog source",
+          "admissions_relevance_score": 4,
+          "admissions_topics": [
+            "early_decision",
+            "application_timeline",
+            "admissions_strategy"
+          ],
+          "drop_reason": ""
+        }
+      ]
+    },
+    {
+      "source_type": "youtube",
+      "source_name": "Harvard College Admissions & Financial Aid",
+      "title": "College Essay Tips + Writing your Best College Essay | Real Advice from Harvard Admissions",
+      "url": "https://www.youtube.com/watch?v=Xz94wRwFOCI",
+      "author_or_channel": "Harvard College Admissions & Financial Aid",
+      "published_date": "",
+      "collected_at": "2026-06-27T14:24:28Z",
+      "raw_text": "Hi, everyone. My name is Andrea, and I'm currently a junior at Harvard studying psychology. And today we'll be talking about writing the college essay. So when I was writing my college essay, I remember looking online and seeing all these picture-perfect essays that were quirky...",
+      "admissions_relevance_score": 4,
+      "admissions_topics": [
+        "college_essays",
+        "admissions_strategy"
+      ],
+      "drop_reason": "",
+      "metadata": {
+        "video_id": "Xz94wRwFOCI",
+        "transcript_segment_count": 136,
+        "transcript_source": "youtube-transcript-api",
+        "duration_seconds": null,
+        "admissions_filter": {
+          "min_chunk_score": 3,
+          "chunks_before_filter": 5,
+          "chunks_kept": 5,
+          "chunks_dropped": 0,
+          "drop_reasons": [],
+          "dropped_chunk_previews": []
+        },
+        "sample_preview_only": true,
+        "sample_total_chunks": 5,
+        "sample_raw_text_truncated": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "chunk_be3738a2a26c",
+          "text": "Hi, everyone. My name is Andrea, and I'm currently a junior at Harvard studying psychology. And today we'll be talking about writing the college essay. So when I was writing my college essay, I remember looking online and seeing all these picture-perfect essays that were quirky...",
+          "source_url": "https://www.youtube.com/watch?v=Xz94wRwFOCI",
+          "citation_label": "YouTube, Harvard College Admissions & Financial Aid: College Essay Tips + Writing your Best College Essay | Real Advice from Harvard Admissions at 00:00:00",
+          "start_timestamp": "00:00:00",
+          "end_timestamp": "00:00:51",
+          "topic_tags": [
+            "college_essays",
+            "admissions_strategy"
+          ],
+          "audience": [
+            "junior"
+          ],
+          "content_use": "both",
+          "usefulness_score": 4,
+          "why_useful": "substantive length, detailed context, admissions topic match",
+          "admissions_relevance_score": 3,
+          "admissions_topics": [
+            "college_essays"
+          ],
+          "drop_reason": ""
+        },
+        {
+          "chunk_id": "chunk_2237b93ab5b8",
+          "text": "A really critical question that you can start asking yourself is, what makes you happy to write? If there's a story or a quality or trait that you think that you can really talk about that makes you really proud and really happy to write, that means that is probably a really...",
+          "source_url": "https://www.youtube.com/watch?v=Xz94wRwFOCI",
+          "citation_label": "YouTube, Harvard College Admissions & Financial Aid: College Essay Tips + Writing your Best College Essay | Real Advice from Harvard Admissions at 00:00:51",
+          "start_timestamp": "00:00:51",
+          "end_timestamp": "00:01:42",
+          "topic_tags": [
+            "college_essays"
+          ],
+          "audience": [
+            "general"
+          ],
+          "content_use": "both",
+          "usefulness_score": 4,
+          "why_useful": "substantive length, detailed context, admissions topic match",
+          "admissions_relevance_score": 3,
+          "admissions_topics": [
+            "college_essays"
+          ],
+          "drop_reason": ""
+        }
+      ]
+    },
+    {
+      "source_type": "youtube",
+      "source_name": "ElevatEd School",
+      "title": "Watch THIS Before Starting Your Common App Essay",
+      "url": "https://www.youtube.com/watch?v=2meKwMIWGlw",
+      "author_or_channel": "ElevatEd School",
+      "published_date": "",
+      "collected_at": "2026-06-27T14:24:28Z",
+      "raw_text": "Not sure how to start your college essay? Just give me seven to eight minutes of your time and I'll share the ultimate formula to make your Common App essay one of the greatest stories you've ever pulled. Topic, theme, time. These are the three ingredients to any banger college...",
+      "admissions_relevance_score": 4,
+      "admissions_topics": [
+        "college_essays",
+        "common_app",
+        "admissions_mistakes"
+      ],
+      "drop_reason": "",
+      "metadata": {
+        "video_id": "2meKwMIWGlw",
+        "transcript_segment_count": 165,
+        "transcript_source": "youtube-transcript-api",
+        "duration_seconds": null,
+        "admissions_filter": {
+          "min_chunk_score": 3,
+          "chunks_before_filter": 6,
+          "chunks_kept": 6,
+          "chunks_dropped": 0,
+          "drop_reasons": [],
+          "dropped_chunk_previews": []
+        },
+        "sample_preview_only": true,
+        "sample_total_chunks": 6,
+        "sample_raw_text_truncated": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "chunk_6c74dec69066",
+          "text": "Not sure how to start your college essay? Just give me seven to eight minutes of your time and I'll share the ultimate formula to make your Common App essay one of the greatest stories you've ever pulled. Topic, theme, time. These are the three ingredients to any banger college...",
+          "source_url": "https://www.youtube.com/watch?v=2meKwMIWGlw",
+          "citation_label": "YouTube, ElevatEd School: Watch THIS Before Starting Your Common App Essay at 00:00:00",
+          "start_timestamp": "00:00:00",
+          "end_timestamp": "00:01:08",
+          "topic_tags": [
+            "college_essays",
+            "common_app"
+          ],
+          "audience": [
+            "general"
+          ],
+          "content_use": "both",
+          "usefulness_score": 4,
+          "why_useful": "substantive length, detailed context, admissions topic match",
+          "admissions_relevance_score": 4,
+          "admissions_topics": [
+            "college_essays",
+            "common_app"
+          ],
+          "drop_reason": ""
+        },
+        {
+          "chunk_id": "chunk_699b4d7a7b93",
+          "text": "Here's an example. One of the seniors we worked with last cycle got into UPEN by writing about his pen collection to symbolize his love for inquiry, which naturally brings us to theme. What I'm about to say is by far the most important tip in this video. Distill your Common App...",
+          "source_url": "https://www.youtube.com/watch?v=2meKwMIWGlw",
+          "citation_label": "YouTube, ElevatEd School: Watch THIS Before Starting Your Common App Essay at 00:01:06",
+          "start_timestamp": "00:01:06",
+          "end_timestamp": "00:02:22",
+          "topic_tags": [
+            "college_essays",
+            "common_app"
+          ],
+          "audience": [
+            "general"
+          ],
+          "content_use": "both",
+          "usefulness_score": 4,
+          "why_useful": "substantive length, detailed context, admissions topic match",
+          "admissions_relevance_score": 4,
+          "admissions_topics": [
+            "common_app",
+            "admissions_mistakes"
+          ],
+          "drop_reason": ""
+        }
+      ]
+    },
+    {
+      "source_type": "youtube",
+      "source_name": "CollegeBase",
+      "title": "CollegeBase Sample Admissions Planning Transcript",
+      "url": "https://collegebase.local/examples/manual-transcript",
+      "author_or_channel": "CollegeBase",
+      "published_date": "",
+      "collected_at": "2026-06-27T14:24:28Z",
+      "raw_text": "Welcome to this CollegeBase sample transcript about planning a strong college application. Students should start by choosing a balanced college list with likely, target, and reach schools. For college essays, the goal is to explain specific experiences instead of repeating the...",
+      "admissions_relevance_score": 4,
+      "admissions_topics": [
+        "college_essays",
+        "activities_list",
+        "recommendation_letters",
+        "financial_aid",
+        "college_list",
+        "admissions_strategy"
+      ],
+      "drop_reason": "",
+      "metadata": {
+        "transcript_source": "manual_file",
+        "transcript_file": "examples\\transcripts\\sample_transcript.vtt",
+        "transcript_segment_count": 6,
+        "admissions_filter": {
+          "min_chunk_score": 3,
+          "chunks_before_filter": 1,
+          "chunks_kept": 1,
+          "chunks_dropped": 0,
+          "drop_reasons": [],
+          "dropped_chunk_previews": []
+        },
+        "sample_preview_only": true,
+        "sample_total_chunks": 1,
+        "sample_raw_text_truncated": true
+      },
+      "chunks": [
+        {
+          "chunk_id": "chunk_9c598af97391",
+          "text": "Welcome to this CollegeBase sample transcript about planning a strong college application. Students should start by choosing a balanced college list with likely, target, and reach schools. For college essays, the goal is to explain specific experiences instead of repeating the...",
+          "source_url": "https://collegebase.local/examples/manual-transcript",
+          "citation_label": "YouTube, CollegeBase: CollegeBase Sample Admissions Planning Transcript at 00:00:00",
+          "start_timestamp": "00:00:00",
+          "end_timestamp": "00:00:50",
+          "topic_tags": [
+            "college_essays",
+            "financial_aid",
+            "common_app",
+            "admissions_strategy",
+            "recommendations",
+            "college_list"
+          ],
+          "audience": [
+            "general"
+          ],
+          "content_use": "both",
+          "usefulness_score": 3,
+          "why_useful": "substantive length, admissions topic match",
+          "admissions_relevance_score": 4,
+          "admissions_topics": [
+            "college_essays",
+            "activities_list",
+            "recommendation_letters",
+            "financial_aid",
+            "college_list",
+            "admissions_strategy"
+          ],
+          "drop_reason": ""
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "source_type": "reddit",
+      "source": "reddit://search/ApplyingToCollege?q=college%20essays",
+      "message": "Missing Reddit API credentials. Set REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, and REDDIT_USER_AGENT to enable Reddit collection."
+    }
+  ]
+}
