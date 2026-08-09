@@ -12,7 +12,8 @@ This is a data ingestion and research pipeline for CollegeBase. It is not a webs
 - Each item and chunk includes `admissions_relevance_score`, `admissions_topics`, and `drop_reason`.
 - Live YouTube transcript collection worked in the latest smoke test.
 - Manual YouTube/podcast transcript files are supported as a reliable fallback for `.txt`, `.vtt`, and `.srt`.
-- Reddit uses authenticated PRAW access and skips cleanly when credentials are missing.
+- Focused `r/ApplyingToCollege` filtering, scoring, deduplication, ranking, and review output are proven through deterministic offline tests.
+- Reddit acquisition is provider-based: authorized PRAW for production candidates, plus bounded curated A2C and Atom sources for zero-cost development/calibration. The curated masterpost was live-verified; broader live collection was rate limited in the latest run.
 - Controlled runs work: source jobs, dry-run, run budgets, checkpoints, source registry caching, resume, run summaries, and JSON output.
 - Processing/export works: text cleaning, chunking, topic tags, audience tags, content-use labels, usefulness scores, and citation metadata.
 - Content briefs are generated with simple rule-based grouping. No OpenAI API or paid API is used.
@@ -27,7 +28,8 @@ It drops material about general high school life, random teen lifestyle content,
 
 - Live YouTube transcript collection depends on transcript availability and request access. It worked in the latest local smoke test, but it can still fail or be blocked from other networks.
 - Manual transcript files are the reliable YouTube/podcast fallback.
-- Reddit requires `REDDIT_CLIENT_ID`, `REDDIT_CLIENT_SECRET`, and `REDDIT_USER_AGENT`.
+- Authorized Reddit discovery requires `REDDIT_CLIENT_ID`, `REDDIT_CLIENT_SECRET`, and `REDDIT_USER_AGENT`. PRAW is not live-verified in this environment, and Reddit may require a separate agreement for commercial use.
+- Current unauthenticated Reddit JSON routes return `403`. Atom routes have returned both `200` and `429`; they are bounded development/calibration fallbacks, not a production authorization substitute.
 - College Scorecard support is intentionally small and requires `COLLEGE_SCORECARD_API_KEY` when enabled.
 - Common Data Set parsing is not included yet.
 - Rule-based admissions relevance, tags, and briefs are heuristic, not model-generated analysis.
@@ -165,27 +167,143 @@ Supported formats:
 
 VTT and SRT timestamps are preserved in chunk citation metadata when possible.
 
-## Reddit Credentials
+## Focused Reddit Discovery
 
-Create a local `.env` or set environment variables outside git:
+The Reddit path is intentionally limited to `r/ApplyingToCollege`. All providers feed one normalizer and one deterministic quality pipeline; provider origin, keyword match, or upvote count never bypasses content evaluation.
 
-Windows:
+The processing sequence is:
 
-```bash
-set REDDIT_CLIENT_ID=your_reddit_client_id
-set REDDIT_CLIENT_SECRET=your_reddit_client_secret
-set REDDIT_USER_AGENT=collegebase-content-pipeline/0.1.0
+```text
+candidate acquisition
+-> normalization
+-> structural and junk filters
+-> usefulness scoring and topics
+-> exact and near deduplication
+-> ranking
+-> machine output and human review
 ```
 
-macOS/Linux:
+Provider behavior is evidence-based and deliberately bounded:
+
+| Provider | Credentials | Cost | Current evidence | Data available | Intended use |
+| --- | --- | --- | --- | --- | --- |
+| `public-json` | None | $0 | Live-tested `403` on top, new, and search routes | None in the current environment | Explicit diagnostic/development only |
+| `curated` | None | $0 | Masterpost Atom feed live-tested `200`; 100 unique A2C links found; linked post fetches then hit `429` | Curated URLs and post text when detail feeds allow it | Development/calibration seed source |
+| `rss` | None | $0 | Listing feeds returned `200` during the initial probe and `429` in the latest capability/smoke run | Post title/body/author when available; no score, ratio, or comment count | Bounded development/calibration fallback |
+| `praw` | Three `REDDIT_*` values | $0 API cost; approval dependent | Offline/integration-tested; not live-verified here because credentials are absent | Authorized listings/search, post metadata/text, optional comments | Preferred production candidate after CollegeBase confirms authorization |
+| `import` | None | $0 | Offline-tested | Supplied JSON/JSONL records | Deterministic testing and fallback |
+| `manual` | None | $0 | Offline-tested; live retrieval depends on Atom access | Explicit A2C post URLs | Small curated seed lists |
+
+`--provider auto` is deterministic. It uses PRAW when all three authorized credentials are configured. Otherwise it records PRAW as skipped and runs `curated` followed by `rss`. It does not silently use public JSON. A configured but invalid PRAW integration fails closed instead of silently switching a production-intended run to a development provider.
+
+The default development/calibration cost is `$0`. No paid provider or LLM is required; usefulness ranking is deterministic.
+
+### Offline Proof
+
+The checked-in fixture contains original synthetic examples of strong guides, weak posts, removed content, and duplicate observations. It is not scraped Reddit data. Validate it without network access:
 
 ```bash
-export REDDIT_CLIENT_ID=your_reddit_client_id
-export REDDIT_CLIENT_SECRET=your_reddit_client_secret
-export REDDIT_USER_AGENT=collegebase-content-pipeline/0.1.0
+python scripts/discover_reddit_resources.py --input-json tests/fixtures/reddit_candidates.json --validate-only
 ```
 
-If these are missing, Reddit collection returns a clean error and the rest of the pipeline continues.
+Run the complete offline pipeline:
+
+```bash
+python scripts/discover_reddit_resources.py --input-json tests/fixtures/reddit_candidates.json --no-llm --force --output-dir outputs/reddit_offline_smoke
+```
+
+Verified offline result:
+
+- 18 candidates imported.
+- 3 accepted resources and 3 useful human-review candidates.
+- 2 structurally invalid posts and 8 obvious junk posts rejected.
+- 1 exact duplicate and 1 near duplicate identified.
+- 0 acquisition or processing errors.
+
+The accepted sample covers essays, financial aid, and waitlist/deferral guidance. The review queue preserves borderline but potentially useful application-planning, college-list, and activities guidance instead of silently accepting it.
+
+### Live Reddit Access
+
+Run the cheap capability matrix first. It makes five bounded public requests plus an OAuth check only when credentials exist:
+
+```bash
+python scripts/check_reddit_access.py
+```
+
+Run a bounded zero-cost development/calibration sample:
+
+```bash
+python scripts/discover_reddit_resources.py --provider auto --subreddit ApplyingToCollege --quick --candidate-limit 100 --accepted-limit 25 --no-llm --output-dir outputs/reddit_live_smoke --verbose
+```
+
+The latest live run made 5 HTTP requests, obtained 1 real candidate from the curated masterpost feed, accepted 0, and initially rejected 1. Detail and listing Atom requests remained rate limited after one bounded retry. A no-network replay after a targeted calibration change placed that real masterpost in human review. This is useful access evidence, but it is not enough data to claim broad live calibration.
+
+Reddit's current Data API requires OAuth, a descriptive user agent, and authorized access. Eligible free use is rate limited, deleted content must be removed, and Reddit states that commercial use may require a separate agreement. Review the current [Data API Wiki](https://support.reddithelp.com/hc/en-us/articles/16160319875092-Reddit-Data-API-Wiki), [Developer Interfaces guidance](https://support.reddithelp.com/hc/en-us/articles/14945211791892-Reddit-Developer-Interfaces), [Data API Terms](https://redditinc.com/policies/data-api-terms), and [Developer Terms](https://redditinc.com/policies/developer-terms).
+
+For authorized PRAW access:
+
+1. Request or register Data API access for CollegeBase according to Reddit's current process.
+2. Put the approved client values in a local `.env`; keep `.env.example` blank:
+
+```text
+REDDIT_CLIENT_ID=
+REDDIT_CLIENT_SECRET=
+REDDIT_USER_AGENT=
+```
+
+3. Use a descriptive user agent associated with the approved integration. Do not add a Reddit password, session cookie, or user token.
+4. Verify read-only access:
+
+```bash
+python scripts/check_reddit_auth.py
+```
+
+5. Run a bounded authorized sample:
+
+```bash
+python scripts/discover_reddit_resources.py --provider praw --subreddit ApplyingToCollege --quick --candidate-limit 100 --accepted-limit 25 --no-llm --output-dir outputs/reddit_praw_smoke --verbose
+```
+
+Comments are disabled by default. Add `--include-comments --max-comments-per-post 15` only after the post-level filters are working with the approved account.
+
+Maximum-range mode is explicit and still bounded:
+
+```bash
+python scripts/discover_reddit_resources.py --provider praw --subreddit ApplyingToCollege --max-range --candidate-limit 500 --include-comments --max-comments-per-post 15 --minimum-usefulness-score 70 --resume --output-dir outputs/reddit_applyingtocollege --verbose
+```
+
+For a small manually curated URL list:
+
+```bash
+python scripts/discover_reddit_resources.py --provider manual --reddit-url "https://www.reddit.com/r/ApplyingToCollege/comments/POST_ID/POST_SLUG/" --candidate-limit 10 --no-llm --output-dir outputs/reddit_manual
+```
+
+Manual URLs still depend on bounded Atom access. They do not bypass a `403` or persistent `429`.
+
+### Safety and Retention
+
+- Requests use an honest descriptive user agent, a hard cap, short timeouts, and at most one bounded retry.
+- `403` stops that provider. `429` honors a reasonable `Retry-After` and then stops if throttling persists. No proxies, cookie reuse, CAPTCHA bypass, or identity rotation are used.
+- Successful HTTP responses are cached for at most 24 hours. Expired/corrupt cache files are pruned, and only two output-history generations are retained.
+- Generated Reddit content remains under ignored `outputs/`. Delete an output immediately if its source post is removed; production use needs a routine deletion-sync process.
+- Technical reachability is not commercial or production authorization. CollegeBase must confirm its intended use with Reddit.
+
+### Reddit Outputs
+
+Each completed run writes these eight bundle files:
+
+- `raw_candidates.jsonl`: normalized candidates and acquisition provenance.
+- `accepted_resources.json`: ranked CollegeBase-ready records with full cleaned text and Reddit citation URLs.
+- `human_review.json`: borderline or cautionary resources.
+- `rejected_candidates.jsonl`: rejected posts with reason codes.
+- `duplicate_clusters.json`: retained representatives, rejected members, and similarity evidence.
+- `source_registry.json`: content hashes and prior processing outcomes.
+- `run_summary.json`: acquisition, filtering, duplicate, scoring, cache, and error counts.
+- `review_report.md`: highest-ranked resources plus rejection and error samples for manual quality review.
+
+These are research outputs derived from community posts, not official admissions guidance. Generated data remains under ignored `outputs/`. Material engineering choices are recorded in [docs/reddit_discovery_decisions.md](docs/reddit_discovery_decisions.md).
+
+Another admissions subreddit is not enabled by a CLI string alone. Add it to the source registry, confirm its rules and access model, add provider fixtures, and update the scope validation before enabling it.
 
 ## College Scorecard Key
 
@@ -256,7 +374,7 @@ python -m pytest
 python -m compileall src
 ```
 
-Tests cover cleaning, chunking, tagging, admissions relevance filtering, source dropping when most chunks are irrelevant, article fallback behavior, transcript parsing for TXT/VTT/SRT, Reddit missing credentials, mocked Reddit output schema, content brief generation, config loading, dry-run behavior, checkpoint/resume behavior, source registry caching, and JSON schema basics.
+Tests cover cleaning, chunking, tagging, admissions relevance filtering, source dropping when most chunks are irrelevant, article fallback behavior, transcript parsing for TXT/VTT/SRT, Reddit authentication failures, API normalization, offline import, junk filtering, scoring, deduplication, ranking, bounded retries, checkpoint/resume behavior, output schemas, content brief generation, config loading, source registry caching, and JSON schema basics.
 
 ## Future Improvements
 
@@ -265,3 +383,4 @@ Tests cover cleaning, chunking, tagging, admissions relevance filtering, source 
 - Add mocked HTTP integration tests for article and YouTube collectors.
 - Add richer rule-based brief templates for admissions topics.
 - Add optional authenticated YouTube/caption workflows if CollegeBase needs more reliable video ingestion.
+- Run a bounded authenticated Reddit quality sample after CollegeBase receives approved API access, then calibrate heuristics against the human review set.
