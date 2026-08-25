@@ -4,6 +4,19 @@ Python backend MVP for collecting college admissions content, cleaning it, chunk
 
 This is a data ingestion and research pipeline for CollegeBase. It is not a website, chatbot, LangChain app, vector database, or frontend.
 
+## Pipeline
+
+```text
+article, YouTube, Reddit, and official-data sources
+-> bounded source jobs with retries and checkpoints
+-> cleaning and deduplication
+-> admissions relevance filtering
+-> chunking, scoring, and tagging
+-> citation-ready JSON and content briefs
+```
+
+The pipeline is deterministic and runs without a paid API. Provider-specific collectors are kept separate from the shared processing and output stages, while the source registry and checkpoints make interrupted or repeated runs reproducible.
+
 ## What Works Now
 
 - Article/blog ingestion is proven in the live smoke test.
@@ -40,10 +53,10 @@ It drops material about general high school life, random teen lifestyle content,
 python -m venv .venv
 ```
 
-Windows:
+Windows PowerShell:
 
 ```bash
-.venv\Scripts\activate
+.\.venv\Scripts\Activate.ps1
 ```
 
 macOS/Linux:
@@ -52,10 +65,10 @@ macOS/Linux:
 source .venv/bin/activate
 ```
 
-Install dependencies:
+Install the project and test dependencies:
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -e ".[dev]"
 ```
 
 ## Safe Empty Run
